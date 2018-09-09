@@ -1,0 +1,497 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{54C84E43-1A56-499C-97B8-FA53F8FE8399}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApi</RootNamespace>
+    <AssemblyName>WebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.1\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.2.1\lib\net451\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.2.1\lib\net451\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.1\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.4.0.0\lib\net451\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.1\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.6\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="src\.gitignore" />
+    <Content Include="src\app-modules\angular-modules.js" />
+    <Content Include="src\app-modules\common\login\login.dev.js" />
+    <Content Include="src\app-modules\common\login\login.html" />
+    <Content Include="src\app-modules\common\login\login.prod.js" />
+    <Content Include="src\app-modules\common\login\reset-password.html" />
+    <Content Include="src\app-modules\common\login\reset-password.js" />
+    <Content Include="src\app-modules\common\main\home.html" />
+    <Content Include="src\app-modules\common\main\main-menu.css" />
+    <Content Include="src\app-modules\common\main\main-menu.html" />
+    <Content Include="src\app-modules\common\main\main.css" />
+    <Content Include="src\app-modules\common\main\main.html" />
+    <Content Include="src\app-modules\config-auth.js" />
+    <Content Include="src\app-modules\config-ax-api.js" />
+    <Content Include="src\app-modules\config-ax-components.js" />
+    <Content Include="src\app-modules\config-modules.js" />
+    <Content Include="src\app-modules\dynamic-styles.js" />
+    <Content Include="src\app-modules\favicon.jpg" />
+    <Content Include="src\app-modules\index.dev.html" />
+    <Content Include="src\app-modules\index.prod.html" />
+    <Content Include="src\app-modules\media-styles.js" />
+    <Content Include="src\app-modules\modules.css" />
+    <Content Include="src\app-modules\new module\cities\cities-code-popup.html" />
+    <Content Include="src\app-modules\new module\cities\cities-code.html" />
+    <Content Include="src\app-modules\new module\cities\cities-code.js" />
+    <Content Include="src\app-modules\new module\cities\countries-cities.html" />
+    <Content Include="src\app-modules\new module\countries\countries-code.html" />
+    <Content Include="src\app-modules\new module\countries\countries-code.js" />
+    <Content Include="src\app-modules\new module\customers\customers-addresses-popup.html" />
+    <Content Include="src\app-modules\new module\customers\customers-code-popup.html" />
+    <Content Include="src\app-modules\new module\customers\customers-code.html" />
+    <Content Include="src\app-modules\new module\customers\customers-code.js" />
+    <Content Include="src\app-modules\new module\customers\customers-details.html" />
+    <Content Include="src\app-modules\new module\customers\customers-details.js" />
+    <Content Include="src\app-modules\new module\customers\customers.html" />
+    <Content Include="src\app-modules\new module\test.js" />
+    <Content Include="src\app-modules\new module\test.html" />
+    <Content Include="src\app.js" />
+    <Content Include="src\components\ax-components-config.js" />
+    <Content Include="src\components\bower-libs\angular-hammer\angular.hammer.js" />
+    <Content Include="src\components\bower-libs\angular\angular-loader.min.js" />
+    <Content Include="src\components\bower-libs\angular\angular-route.min.js" />
+    <Content Include="src\components\bower-libs\angular\angular.min.js" />
+    <Content Include="src\components\bower-libs\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="src\components\bower-libs\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="src\components\bower-libs\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="src\components\bower-libs\bootstrap\css\bootstrap.css" />
+    <Content Include="src\components\bower-libs\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\components\bower-libs\bootstrap\js\bootstrap.js" />
+    <Content Include="src\components\bower-libs\bootstrap\js\bootstrap.min.js" />
+    <Content Include="src\components\bower-libs\font-awesome\css\font-awesome.css" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="src\components\bower-libs\hammer\hammer.js" />
+    <Content Include="src\components\bower-libs\jquery\jquery.js" />
+    <Content Include="src\components\bower-libs\jquery\LICENSE.txt" />
+    <Content Include="src\components\bower-libs\lodash-bower\lodash.js" />
+    <Content Include="src\components\bower-libs\moment\moment-with-locales.min.js" />
+    <Content Include="src\components\bower-libs\moment\moment.min.js" />
+    <Content Include="src\components\bower-libs\ng-file-upload\ng-file-upload-all.js" />
+    <Content Include="src\components\bower-libs\ng-storage\ng-storage.min.js" />
+    <Content Include="src\components\bower-libs\tether\tether-theme-arrows-dark.css" />
+    <Content Include="src\components\bower-libs\tether\tether-theme-arrows.css" />
+    <Content Include="src\components\bower-libs\tether\tether-theme-basic.css" />
+    <Content Include="src\components\bower-libs\tether\tether.css" />
+    <Content Include="src\components\bower-libs\tether\tether.js" />
+    <Content Include="src\components\bower-libs\toastr\toastr.css" />
+    <Content Include="src\components\bower-libs\toastr\toastr.js" />
+    <Content Include="src\components\bower-libs\ui-router\angular-ui-router.js" />
+    <Content Include="src\components\controls\ax-autocomplete.css" />
+    <Content Include="src\components\controls\ax-autocomplete.js" />
+    <Content Include="src\components\controls\ax-checkbox.css" />
+    <Content Include="src\components\controls\ax-checkbox.js" />
+    <Content Include="src\components\controls\ax-date-parser.js" />
+    <Content Include="src\components\controls\ax-datetime.css" />
+    <Content Include="src\components\controls\ax-datetime.js" />
+    <Content Include="src\components\controls\ax-file.css" />
+    <Content Include="src\components\controls\ax-file.js" />
+    <Content Include="src\components\controls\ax-filters-pane.css" />
+    <Content Include="src\components\controls\ax-filters-pane.js" />
+    <Content Include="src\components\controls\ax-i-spinner.js" />
+    <Content Include="src\components\controls\ax-json-tree-view.css" />
+    <Content Include="src\components\controls\ax-json-tree-view.js" />
+    <Content Include="src\components\controls\ax-radio-options.css" />
+    <Content Include="src\components\controls\ax-radio-options.js" />
+    <Content Include="src\components\controls\ax-scroller.css" />
+    <Content Include="src\components\controls\ax-scroller.js" />
+    <Content Include="src\components\controls\ax-tabs.css" />
+    <Content Include="src\components\controls\ax-tabs.js" />
+    <Content Include="src\components\controls\ax-text.css" />
+    <Content Include="src\components\controls\ax-text.js" />
+    <Content Include="src\components\controls\ax-tree-view.css" />
+    <Content Include="src\components\controls\ax-tree-view.js" />
+    <Content Include="src\components\controls\dropdown\ax-dropdown-popup-component.js" />
+    <Content Include="src\components\controls\dropdown\ax-dropdown-popup.js" />
+    <Content Include="src\components\controls\dropdown\ax-dropdown-table.js" />
+    <Content Include="src\components\controls\dropdown\ax-popup.js" />
+    <Content Include="src\components\controls\dropdown\dropdown-confirm.html" />
+    <Content Include="src\components\controls\form\ax-form-component.js" />
+    <Content Include="src\components\controls\form\ax-form-controller.js" />
+    <Content Include="src\components\controls\form\ax-form-errors.js" />
+    <Content Include="src\components\controls\form\ax-form-field.js" />
+    <Content Include="src\components\controls\form\ax-form-input.js" />
+    <Content Include="src\components\controls\form\ax-form-section.js" />
+    <Content Include="src\components\controls\form\ax-form-table.js" />
+    <Content Include="src\components\controls\form\ax-form-template.js" />
+    <Content Include="src\components\controls\form\ax-form.css" />
+    <Content Include="src\components\controls\table\ax-grid.js" />
+    <Content Include="src\components\controls\table\ax-table-attributes.js" />
+    <Content Include="src\components\controls\table\ax-table-components.js" />
+    <Content Include="src\components\controls\table\ax-table-controller.js" />
+    <Content Include="src\components\controls\table\ax-table-datasource.js" />
+    <Content Include="src\components\controls\table\ax-table-dropdowns.js" />
+    <Content Include="src\components\controls\table\ax-table-error-messages.js" />
+    <Content Include="src\components\controls\table\ax-table-helper.js" />
+    <Content Include="src\components\controls\table\ax-table-layout.js" />
+    <Content Include="src\components\controls\table\ax-table-template.js" />
+    <Content Include="src\components\controls\table\ax-table.standard.css" />
+    <Content Include="src\components\controls\table\elements\ax-table-button.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-column-edit.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-column-filter.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-column-header.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-column-view.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-column.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-editor.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-export.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-grouping.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-header.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-paginator.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-pivot-table.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-profiles.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-scroller.js" />
+    <Content Include="src\components\controls\table\elements\ax-table-toolbar.js" />
+    <Content Include="src\components\controls\table\templates\ax-table-column-menu.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-edit-mode.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-group-edit.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-grouping.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-layout.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-ordering.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-popup-grouping.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-popup-layout.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-popup-ordering.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-popup-profiles.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config-profiles.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-config.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-export.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-field-edit.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-filter-global.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-filter-number.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-filter-string.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-groups-filter.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-groups-toggle.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-paginator.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-pivot-table-columns.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-pivot-table-rows.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-pivot-table-show.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-pivot-table-values.html" />
+    <Content Include="src\components\controls\table\templates\ax-table-pivot-table.html" />
+    <Content Include="src\components\controls\table\templates\structure.html" />
+    <Content Include="src\components\dependencies\js-xlsx\cpexcel.js" />
+    <Content Include="src\components\dependencies\js-xlsx\jszip.js" />
+    <Content Include="src\components\dependencies\js-xlsx\shim.min.js" />
+    <Content Include="src\components\dependencies\js-xlsx\xlsx.js" />
+    <Content Include="src\components\dependencies\ng-dialog\dialog-confirm.html" />
+    <Content Include="src\components\dependencies\ng-dialog\dialog-confirm.js" />
+    <Content Include="src\components\dependencies\ng-dialog\dialog-report.html" />
+    <Content Include="src\components\dependencies\ng-dialog\dialog-report.js" />
+    <Content Include="src\components\dependencies\ng-dialog\ng-dialog-confirm.js" />
+    <Content Include="src\components\dependencies\ng-dialog\ng-dialog-open.js" />
+    <Content Include="src\components\dependencies\ng-dialog\ng-dialog.css" />
+    <Content Include="src\components\dependencies\ng-dialog\ng-dialog.js" />
+    <Content Include="src\components\dependencies\ng-sortable\ng-sortable.css" />
+    <Content Include="src\components\dependencies\ng-sortable\ng-sortable.js" />
+    <Content Include="src\components\dependencies\ng-sortable\ng-sortable.style.css" />
+    <Content Include="src\components\dependencies\notify.js" />
+    <Content Include="src\components\dependencies\remove-accents\remove-accents.js" />
+    <Content Include="src\components\dependencies\ui-bootstrap\datepickerPopup\popup.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\datepicker\datepicker.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\datepicker\day.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\datepicker\month.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\datepicker\year.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\popover\popover-html.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\popover\popover-template.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\popover\popover.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\timepicker\timepicker.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\tooltip\tooltip-html-popup.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\tooltip\tooltip-popup.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\tooltip\tooltip-template-popup.html" />
+    <Content Include="src\components\dependencies\ui-bootstrap\ui-bootstrap-config.js" />
+    <Content Include="src\components\dependencies\ui-bootstrap\ui-bootstrap.js" />
+    <Content Include="src\components\directives\ax-dynamic-template.js" />
+    <Content Include="src\components\directives\ax-url.js" />
+    <Content Include="src\components\directives\moment-to-date.js" />
+    <Content Include="src\components\directives\table-wrapper.js" />
+    <Content Include="src\components\factories\auth-service.js" />
+    <Content Include="src\components\factories\ax-api.js" />
+    <Content Include="src\components\factories\ax-data-set.js" />
+    <Content Include="src\components\factories\ax-data-store.js" />
+    <Content Include="src\components\factories\guid-generator.js" />
+    <Content Include="src\components\factories\template-factory.js" />
+    <Content Include="src\components\filters\err-src.js" />
+    <Content Include="src\components\filters\greater-than.js" />
+    <Content Include="src\components\filters\less-than.js" />
+    <Content Include="src\components\filters\number-to-string.js" />
+    <Content Include="src\components\filters\start-from.js" />
+    <Content Include="src\components\filters\string-to-boolean.js" />
+    <Content Include="src\components\filters\string-to-date.js" />
+    <Content Include="src\components\filters\string-to-number.js" />
+    <Content Include="src\components\filters\trust-as-html.js" />
+    <Content Include="src\components\images\agg-sum.png" />
+    <Content Include="src\components\libs\ax-array-object-extend.js" />
+    <Content Include="src\components\libs\ax-button.js" />
+    <Content Include="src\components\libs\ax-css-style.js" />
+    <Content Include="src\components\libs\ax-data-adapter.js" />
+    <Content Include="src\components\libs\ax-element.js" />
+    <Content Include="src\components\libs\ax-input.js" />
+    <Content Include="src\components\libs\ax-libs.js" />
+    <Content Include="src\components\libs\ax-number-object-extend.js" />
+    <Content Include="src\components\libs\ax-string-object-extend.js" />
+    <Content Include="src\components\libs\ax-toolbar.js" />
+    <Content Include="src\components\libs\ax-trap-focus.js" />
+    <Content Include="src\components\libs\ax-utils.js" />
+    <Content Include="src\components\stylesheets\toastr.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Base\ActionResponse.cs" />
+    <Compile Include="Api\Base\CommandTextType.cs" />
+    <Compile Include="Api\Base\DataRowUserExtensions.cs" />
+    <Compile Include="Api\Base\DbProviderFactory.cs" />
+    <Compile Include="Api\Base\ObjectVar.cs" />
+    <Compile Include="Api\Base\ProviderFactoryType.cs" />
+    <Compile Include="Api\Base\DataAccess.cs" />
+    <Compile Include="Api\Module\Account\AccountController.cs" />
+    <Compile Include="Api\Module\Cities\CityController.cs" />
+    <Compile Include="Api\Module\Cities\City.cs" />
+    <Compile Include="Api\Module\Cities\CityModel.cs" />
+    <Compile Include="Api\Module\Cities\CityModelExtended.cs" />
+    <Compile Include="Api\Module\Cities\GetCitiesResponse.cs" />
+    <Compile Include="Api\Module\Countries\CountryController.cs" />
+    <Compile Include="Api\Module\Countries\Country.cs" />
+    <Compile Include="Api\Module\Countries\CountryModel.cs" />
+    <Compile Include="Api\Module\Customers\Addresses\Address.cs" />
+    <Compile Include="Api\Module\Customers\Addresses\AddressController.cs" />
+    <Compile Include="Api\Module\Customers\Addresses\AddressModelExtended.cs" />
+    <Compile Include="Api\Module\Customers\Addresses\AddressModel.cs" />
+    <Compile Include="Api\Module\Customers\Customer.cs" />
+    <Compile Include="Api\Module\Customers\CustomerController.cs" />
+    <Compile Include="Api\Module\Customers\CustomerModel.cs" />
+    <Compile Include="Api\Module\Customers\CustomerModelExtended.cs" />
+    <Compile Include="Api\Module\Customers\BankAccounts\BankAccount.cs" />
+    <Compile Include="Api\Module\Customers\BankAccounts\BankAccountController.cs" />
+    <Compile Include="Api\Module\Customers\BankAccounts\BankAccountModel.cs" />
+    <Compile Include="Api\Module\Customers\GetCustomersDetailsResponse.cs" />
+    <Compile Include="Api\Module\Customers\GetCustomersResponse.cs" />
+    <Compile Include="Api\Module\Customers\Emails\Email.cs" />
+    <Compile Include="Api\Module\Customers\Emails\EmailModel.cs" />
+    <Compile Include="Api\Module\Customers\Emails\EmailController.cs" />
+    <Compile Include="Api\Module\Customers\Phones\PhoneController.cs" />
+    <Compile Include="Api\Module\Customers\Phones\Phone.cs" />
+    <Compile Include="Api\Module\Customers\Phones\PhoneModel.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="launch-chrome.bat" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="src\components\controls\table\api\axTableController.cs_" />
+    <None Include="src\components\controls\table\api\xlsExportRequest.cs_" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="src\.htaccess" />
+    <Content Include="src\app-modules\gulp-config.json" />
+    <Content Include="src\components\bower-libs\angular-hammer\README.md" />
+    <Content Include="src\components\bower-libs\angular\angular-loader.min.js.map" />
+    <Content Include="src\components\bower-libs\angular\angular.min.js.map" />
+    <Content Include="src\components\bower-libs\angular\LICENSE.md" />
+    <Content Include="src\components\bower-libs\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="src\components\bower-libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="src\components\bower-libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="src\components\bower-libs\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="src\components\bower-libs\bootstrap\js\bootstrap.js.map" />
+    <Content Include="src\components\bower-libs\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="src\components\bower-libs\bootstrap\LICENSE" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="src\components\bower-libs\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="src\components\bower-libs\hammer\changes.readme" />
+    <Content Include="src\components\bower-libs\hammer\LICENSE.md" />
+    <Content Include="src\components\bower-libs\lodash-bower\LICENSE" />
+    <Content Include="src\components\bower-libs\moment\LICENSE" />
+    <Content Include="src\components\bower-libs\ng-file-upload\LICENSE" />
+    <Content Include="src\components\bower-libs\ng-storage\LICENSE" />
+    <Content Include="src\components\bower-libs\tether\LICENSE" />
+    <Content Include="src\components\bower-libs\toastr\LICENSE" />
+    <Content Include="src\components\bower-libs\ui-router\download.url" />
+    <Content Include="src\components\bower-libs\ui-router\LICENSE" />
+    <Content Include="src\components\controls\dropdown\dropdown.scss" />
+    <Content Include="src\components\controls\table\ax-table.scss" />
+    <Content Include="src\components\dependencies\js-xlsx\Angular Demo.url" />
+    <Content Include="src\components\dependencies\js-xlsx\docs.pdf" />
+    <Content Include="src\components\dependencies\js-xlsx\Documentation.url" />
+    <Content Include="src\components\dependencies\js-xlsx\git.url" />
+    <Content Include="src\components\dependencies\js-xlsx\LICENSE" />
+    <Content Include="src\components\dependencies\ng-dialog\LICENSE.md" />
+    <Content Include="src\components\dependencies\ng-sortable\LICENSE.md" />
+    <Content Include="src\components\dependencies\remove-accents\LICENSE" />
+    <Content Include="src\components\dependencies\ui-bootstrap\LICENSE.md" />
+    <Content Include="src\components\gulp-config.json" />
+    <Content Include="src\components\gulp-config.json.bindings" />
+    <Content Include="src\components\stylesheets\base.scss" />
+    <Content Include="src\components\stylesheets\input-range.scss" />
+    <Content Include="src\components\themes\ax-theme.appearance.bootstrap-1.scss" />
+    <Content Include="src\components\themes\ax-theme.dimensions.large.scss" />
+    <Content Include="src\components\themes\ax-theme.dimensions.normal.scss" />
+    <Content Include="src\LICENSE" />
+    <Content Include="src\README.md" />
+    <Content Include="src\web.config" />
+    <Content Include="src\components\themes\ax-theme.appearance.bootstrap-flat.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49593</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49593/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

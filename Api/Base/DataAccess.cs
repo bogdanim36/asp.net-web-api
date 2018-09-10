@@ -672,7 +672,7 @@ namespace WebApi.Api.Base
 				foreach (DbParameter parameter in updCmd.Parameters)
 				{
 					string fieldName = parameter.SourceColumn;
-					parameter.Value = row.GetType().GetProperty(fieldName+'1').GetValue(row, null);
+					parameter.Value = row.GetType().GetProperty(fieldName).GetValue(row, null);
 					if (fieldName == identityColumn) parameter.SourceVersion = DataRowVersion.Original;
 				}
 				object returnVal = updCmd.ExecuteNonQuery();

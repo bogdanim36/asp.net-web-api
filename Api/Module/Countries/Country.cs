@@ -18,7 +18,7 @@ namespace WebApi.Api.Countries
 		{
 			ObjectVar par = new ObjectVar { Name = "?id", Value = id };
 
-			DataTable data = dataAccess.ExecuteQuery("Select * from Countries where id=?", par);
+			DataTable data = dataAccess.ExecuteQuery("Select * from " + tableName + " where id=?", par);
 			if (data.Rows.Count == 0) return null;
 			else return ConvertToItem(data.Rows[0]);
 		}
@@ -33,7 +33,7 @@ namespace WebApi.Api.Countries
 		}
 		public IEnumerable<CountryModel> getItems()
 		{
-			DataTable data = dataAccess.ExecuteQuery("Select * from Countries");
+			DataTable data = dataAccess.ExecuteQuery("Select * from " + tableName);
 			return ConvertToItems(data);
 		}
 		private IEnumerable<CountryModel> ConvertToItems(DataTable dataTable)
@@ -46,26 +46,9 @@ namespace WebApi.Api.Countries
 		public CountryModel Update(int id, CountryModel data)
 		{
 			var rowAffected = 0;
-			DataRow row = ConvertToDataRow(data);
-			dataAccess.RecordUpdate(out rowAffected, row);
+			dataAccess.RecordUpdate<CountryModel>(out rowAffected, data);
 			var item = getItem(id);
 			return item;
-		}
-		public DataRow ConvertToDataRow( CountryModel data)
-		{
-			DataTable dataTable = new DataTable();
-			var src = data.GetType();
-			foreach (PropertyInfo info in src.GetProperties())
-			{
-				dataTable.Columns.Add(info.Name);
-			}
-			dataTable.AcceptChanges();
-			DataRow row = dataTable.NewRow();
-			foreach (PropertyInfo info in src.GetProperties())
-			{
-				row[info.Name] = info.GetValue(data, null);
-			}
-			return row;
 		}
 	}
 }

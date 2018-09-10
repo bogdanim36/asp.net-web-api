@@ -2,9 +2,9 @@
 {
 	public class EmailModel
 	{
-		public int id;
-		public int customerId;
-		public string name;
-		public string email;
+		public int id { get; set; }
+		public int customerId { get; set; }
+		public string name { get; set; }
+		public string email { get; set; }
 	}
 }

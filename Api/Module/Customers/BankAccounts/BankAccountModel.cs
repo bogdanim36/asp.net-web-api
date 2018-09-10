@@ -2,10 +2,10 @@
 {
 	public class BankAccountModel
 	{
-		public int id;
-		public int customerId;
-		public string name;
-		public string account;
-		public string bank;
+		public int id { get; set; }
+		public int customerId { get; set; }
+		public string name { get; set; }
+		public string account { get; set; }
+		public string bank { get; set; }
 	}
 }

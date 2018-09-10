@@ -207,7 +207,7 @@ namespace WebApi.Api.Base
 					}
 					else
 					{
-						throw new Exception( String.Format("Tabela {0}, nu contine coloana Identity ={1}", tableName, identityColumn));
+						throw new Exception(String.Format("Tabela {0}, nu contine coloana Identity ={1}", tableName, identityColumn));
 					}
 				}
 			}
@@ -335,7 +335,7 @@ namespace WebApi.Api.Base
 			}
 			catch (Exception ex)
 			{
-				throw ex ;
+				throw ex;
 			}
 			con.Close();
 			return lastId;
@@ -375,7 +375,7 @@ namespace WebApi.Api.Base
 					parameter.ParameterName = "?" + row["fieldName"];
 					parameter.MySqlDbType = GetMySqlType(row["ValueType"].ToString());
 					parameter.Direction = ParameterDirection.Input;
-					parameter.SourceColumn = row["fieldName"].ToString();
+					parameter.SourceColumn = row["fieldCaption"].ToString();
 					com.Parameters.Add(parameter);
 				}
 			}
@@ -437,7 +437,7 @@ namespace WebApi.Api.Base
 			foreach (DataRow row in this.tableStruct.Rows)
 			{
 				string colName = row["fieldName"].ToString();
-				string colCaption = row["fieldcaption"].ToString();
+				string colCaption = row["fieldCaption"].ToString();
 				mapping.ColumnMappings.Add(colName, colCaption);
 
 			}
@@ -450,7 +450,7 @@ namespace WebApi.Api.Base
 			foreach (DataRow row in this.tableStruct.Rows)
 			{
 
-				string colName = row["FieldName"].ToString();
+				string colName = row["FieldCaption"].ToString();
 				if (colName.Equals(this.identityColumn)) continue;
 
 				if (str != "")
@@ -615,7 +615,7 @@ namespace WebApi.Api.Base
 			con.ConnectionString = BuildConnectionString(providerName, dbName);
 
 			tableStruct = RetrieveTableStructure(tableName);
-			if (tableStruct.Columns.Count == 0) return ;
+			if (tableStruct.Columns.Count == 0) return;
 			dataAdapter = provider.CreateDataAdapter();
 			dataAdapter.UpdateCommand = BuildUpdateCommand(provider, con);
 			dataAdapter.AcceptChangesDuringFill = true;
@@ -632,6 +632,47 @@ namespace WebApi.Api.Base
 				{
 					string fieldName = parameter.SourceColumn;
 					parameter.Value = row[fieldName];
+					if (fieldName == identityColumn) parameter.SourceVersion = DataRowVersion.Original;
+				}
+				object returnVal = updCmd.ExecuteNonQuery();
+				rowsAffected = Convert.ToInt16(returnVal);
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+			finally
+			{ updCmd.Connection.Close(); }
+
+
+		}
+		public void RecordUpdate<T>(out int rowsAffected, T row)
+		{
+			rowsAffected = 0;
+			readConectionSettings();
+			string lib = GetProviderFactoryLib(providerName);
+			provider = RegisterProvider(providerName);
+			con = provider.CreateConnection();
+			con.ConnectionString = BuildConnectionString(providerName, dbName);
+
+			tableStruct = RetrieveTableStructure(tableName);
+			if (tableStruct.Columns.Count == 0) return;
+			dataAdapter = provider.CreateDataAdapter();
+			dataAdapter.UpdateCommand = BuildUpdateCommand(provider, con);
+			dataAdapter.AcceptChangesDuringFill = true;
+			dataAdapter.AcceptChangesDuringUpdate = true;
+			dataAdapter.ContinueUpdateOnError = false;
+
+			DbCommand updCmd = dataAdapter.UpdateCommand;
+			Console.WriteLine("Update cmd: " + updCmd.CommandText);
+			try
+			{
+				updCmd.Connection.Open();
+
+				foreach (DbParameter parameter in updCmd.Parameters)
+				{
+					string fieldName = parameter.SourceColumn;
+					parameter.Value = row.GetType().GetProperty(fieldName+'1').GetValue(row, null);
 					if (fieldName == identityColumn) parameter.SourceVersion = DataRowVersion.Original;
 				}
 				object returnVal = updCmd.ExecuteNonQuery();
@@ -719,7 +760,7 @@ namespace WebApi.Api.Base
 			}
 			catch (Exception ex)
 			{
-					throw ex;
+				throw ex;
 			}
 			con.Close();
 			return rowsAffected;

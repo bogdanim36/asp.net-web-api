@@ -2,9 +2,9 @@
 {
 	public class CustomerModelExtended : CustomerModel
 	{
-		public string country;
-		public string countryInvariant;
-		public string city;
-		public string cityInvariant;
+		public string country { get; set; }
+		public string countryInvariant { get; set; }
+		public string city { get; set; }
+		public string cityInvariant { get; set; }
 	}
 }

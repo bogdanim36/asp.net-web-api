@@ -2,7 +2,7 @@
 {
 	public class CityModelExtended :CityModel
 	{
-		public string country;
-		public string countryInvariant;
+		public string country { get; set; }
+		public string countryInvariant { get; set; }
 	}
 }

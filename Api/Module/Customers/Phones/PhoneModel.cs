@@ -2,9 +2,9 @@
 {
 	public class PhoneModel
 	{
-		public int id;
-		public int customerId;
-		public string name;
-		public string phone;
+		public int id { get; set; }
+		public int customerId { get; set; }
+		public string name { get; set; }
+		public string phone { get; set; }
 	}
 }

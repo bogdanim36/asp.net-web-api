@@ -355,6 +355,7 @@
     <Compile Include="Api\Base\ProviderFactoryType.cs" />
     <Compile Include="Api\Base\DataAccess.cs" />
     <Compile Include="Api\Module\Account\AccountController.cs" />
+    <Compile Include="Api\Base\GenericService.cs" />
     <Compile Include="Api\Module\Cities\CityController.cs" />
     <Compile Include="Api\Module\Cities\City.cs" />
     <Compile Include="Api\Module\Cities\CityModel.cs" />
